@@ -14,10 +14,11 @@ RESET = '\033[0;0m'
 
 # Replace <TOKEN> with IPinfo.io TOKEN
 handler = ipinfo.getHandler('<TOKEN>')
+current_time = datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
 # Replace <INPUT FILE PATH> with actual path
 input_file = '<INPUT FILE PATH>'
 # Replace <OUTPUT FILE PATH> with actual path; in case the file doesn't exist it will be created
-output_file = '<OUTPUT FILE PATH>'
+output_file = f'<OUTPUT FILE PATH>_{current_time}.txt'
 
 
 def banner():
@@ -103,7 +104,6 @@ def generate_heatmap(file):
         print('Mapping successful. Output:')
         print(output)
         # Save the heatmap link to a file
-        current_time = datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
         filename = f'heatmap_{current_time}.txt'
         with open(filename, 'w') as heatmap_file:
             heatmap_file.write(output)
